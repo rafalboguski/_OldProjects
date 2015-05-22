@@ -1,1 +1,1 @@
-# Hibernate_test 
+# Learning ORM
