@@ -14,5 +14,7 @@
         <property name="title" column="title" type="string"/>
         <property name="autor" column="autor" type="string"/>
         <property name="pages" column="pages_count" type="int"/>
+
+
     </class>
 </hibernate-mapping>
