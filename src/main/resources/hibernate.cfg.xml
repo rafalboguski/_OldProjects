@@ -16,7 +16,9 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
 
-        <mapping resource="Book.hbm.xml"/>
+
+        <mapping class="Book"></mapping>
+        <!--<mapping resource="Book.hbm.xml"/>-->
 
     </session-factory>
 </hibernate-configuration>

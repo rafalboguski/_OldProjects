@@ -1,9 +1,21 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name ="Book")
 
 public class Book {
 
+    @Id @GeneratedValue
+    @Column(name ="id")
     private  int id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "autor")
     private String autor;
+
+    @Column(name = "number_of_pages")
     private int pages;
 
 
