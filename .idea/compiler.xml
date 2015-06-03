@@ -26,5 +26,8 @@
         <module name="QueryDSL" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="QueryDSL" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
