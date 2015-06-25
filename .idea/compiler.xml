@@ -26,5 +26,8 @@
         <module name="Hibernate_test" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Hibernate_test" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

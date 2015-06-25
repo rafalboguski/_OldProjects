@@ -18,18 +18,18 @@
     <schema name="SYSPROC" catalog=""/>
     <schema name="SYSSTAT" catalog=""/>
     <table name="BOOK" schema="APP" catalog="" type="TABLE">
-      <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="R0VORVJBVEVEX0JZX0RFRkFVTFQ=" autoIncrement="true"/>
-      <column name="AUTOR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="NUMBER_OF_PAGES" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="BOOK_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="R0VORVJBVEVEX0JZX0RFRkFVTFQ=" autoIncrement="true"/>
       <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SQL150524124748230" columns="ID"/>
+      <primary-key name="SQL150625095251950" columns="BOOK_ID"/>
+      <exported-key name="FK25D6AFA4F6B6AD" table="PAGE" schema="APP" catalog="" columns="BOOK_ID"/>
     </table>
-    <table name="BOOK" schema="APPLICATION" catalog="" type="TABLE">
+    <table name="PAGE" schema="APP" catalog="" type="TABLE">
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="R0VORVJBVEVEX0JZX0RFRkFVTFQ=" autoIncrement="true"/>
-      <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="AUTOR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PAGES_COUNT" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="SQL150522215920950" columns="ID"/>
+      <column name="PAGE_NUMBER" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TEXT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BOOK_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SQL150625095416830" columns="ID"/>
+      <foreign-key name="FK25D6AFA4F6B6AD" columns="BOOK_ID" ref-table="BOOK" ref-schema="APP" ref-catalog="" ref-columns="BOOK_ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="SYSALIASES" schema="SYS" catalog="" type="SYSTEM TABLE">
       <column name="ALIASID" sqlType="CHAR" precision="36" scale="0" nullable="false" jdbcType="1"/>
