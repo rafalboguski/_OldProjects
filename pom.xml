@@ -9,11 +9,41 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- HIBERNATE-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.10.Final</version>
+        </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>3.5.6-Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.5.6-Final</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>hibernate-annotations</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.3.0.GA</version>
+        </dependency>
+        <!--GENERIC DAO-->
+        <dependency>
+            <groupId>com.googlecode.genericdao</groupId>
+            <artifactId>dao-hibernate</artifactId>
+            <version>1.2.0</version>
+            <!-- use current version -->
+        </dependency>
+
+        <!-- -->
+
+
         <dependency>
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
@@ -33,18 +63,7 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>hibernate-annotations</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.3.0.GA</version>
-        </dependency>
+
 
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -56,6 +75,7 @@
         <!--<artifactId>slf4j-api</artifactId>-->
         <!--<version>1.6.6</version>-->
         <!--</dependency>-->
+
 
         <dependency>
             <groupId>org.slf4j</groupId>
