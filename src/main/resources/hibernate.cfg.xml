@@ -6,7 +6,7 @@
     <session-factory>
 
         <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
-        <property name="connection.url">jdbc:derby:Bib.db</property>
+        <property name="connection.url">jdbc:derby:src/main/resources/Library.db;create=true</property>
         <!--<property name="connection.username">application</property>-->
         <!--<property name="connection.password">password</property>-->
         <property name="dialect">org.hibernate.dialect.DerbyDialect</property>

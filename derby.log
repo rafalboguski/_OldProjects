@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Jun 25 13:53:11 CEST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014e-2a90-8487-0000062f7778 
-on database directory C:\Users\primaris\Desktop\Projekty\Hibernate2\Bib.db  with class loader sun.misc.Launcher$AppClassLoader@231bf785 
+Thu Jun 25 14:01:26 CEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014e-2a98-1219-0000062fa8e8 
+on database directory C:\Users\primaris\Desktop\Projekty\Hibernate2\src\main\resources\Library.db  with class loader sun.misc.Launcher$AppClassLoader@231bf785 
 Loaded from file:/C:/Users/primaris/.m2/repository/org/apache/derby/derby/10.8.2.2/derby-10.8.2.2.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_51-b13
