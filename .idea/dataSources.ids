@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="Derby -" uuid="18a0f84b-87b4-4961-9b43-a72512edbbe1">
+  <data-source name="Library" uuid="9566a14f-7978-4889-aa96-41fa627ce89a">
     <database-info product="Apache Derby" version="10.11.1.1 - (1616546)" jdbc-version="4.2" driver-name="Apache Derby Embedded JDBC Driver" driver-version="10.11.1.1 - (1616546)">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
     <schema name="APP" catalog=""/>
-    <schema name="APPLICATION" catalog=""/>
     <schema name="NULLID" catalog=""/>
     <schema name="SQLJ" catalog=""/>
     <schema name="SYS" catalog=""/>
@@ -20,16 +19,16 @@
     <table name="BOOK" schema="APP" catalog="" type="TABLE">
       <column name="BOOK_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="R0VORVJBVEVEX0JZX0RFRkFVTFQ=" autoIncrement="true"/>
       <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SQL150625095251950" columns="BOOK_ID"/>
-      <exported-key name="FK25D6AFA4F6B6AD" table="PAGE" schema="APP" catalog="" columns="BOOK_ID"/>
+      <primary-key name="SQL150626150842170" columns="BOOK_ID"/>
+      <exported-key name="FK_3XLMS9CFMC5FF5746EKSQM7XC" table="PAGE" schema="APP" catalog="" columns="BOOK_ID"/>
     </table>
     <table name="PAGE" schema="APP" catalog="" type="TABLE">
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="R0VORVJBVEVEX0JZX0RFRkFVTFQ=" autoIncrement="true"/>
       <column name="PAGE_NUMBER" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="TEXT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="BOOK_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="SQL150625095416830" columns="ID"/>
-      <foreign-key name="FK25D6AFA4F6B6AD" columns="BOOK_ID" ref-table="BOOK" ref-schema="APP" ref-catalog="" ref-columns="BOOK_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <primary-key name="SQL150626152452570" columns="ID"/>
+      <foreign-key name="FK_3XLMS9CFMC5FF5746EKSQM7XC" columns="BOOK_ID" ref-table="BOOK" ref-schema="APP" ref-catalog="" ref-columns="BOOK_ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="SYSALIASES" schema="SYS" catalog="" type="SYSTEM TABLE">
       <column name="ALIASID" sqlType="CHAR" precision="36" scale="0" nullable="false" jdbcType="1"/>

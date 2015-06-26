@@ -1,5 +1,6 @@
-package Library;
+package Library.utils;
 
+import Library.dao.BookDAOImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -19,6 +20,8 @@ public class HibernateUtil {
         }
     }
 
+    private static final BookDAOImpl dao = new BookDAOImpl();
+
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
@@ -27,4 +30,7 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession();
     }
 
+    public static BookDAOImpl Book() {
+        return dao;
+    }
 }

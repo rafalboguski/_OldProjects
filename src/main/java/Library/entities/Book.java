@@ -1,13 +1,13 @@
 package Library.entities;
 
-import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
-import org.hibernate.Session;
+import Library.utils.HibernateUtil;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Book extends GenericDAOImpl {
+public class Book {
 
     @Id
     @GeneratedValue
@@ -20,21 +20,23 @@ public class Book extends GenericDAOImpl {
     private List<Page> pages;
 
 
-    public static List<Book> getAll(Session session) {
-        return session.createQuery("FROM Book").list();
-    }
-
 
     public Book(String title, List<Page> pages) {
         this.title = title;
-        this.pages = pages;
+        this.pages = pages != null ? pages : new ArrayList<Page>();
     }
 
-    public Book() {
+    private Book() {
     }
 
     public void setPages(List<Page> pages) {
         this.pages = pages;
+    }
+
+    public void addPage(Page page) {
+        pages.add(page);
+        page.setBook(this);
+        HibernateUtil.getCurrentSession().save(page);
     }
 
     public List<Page> getPages() {
