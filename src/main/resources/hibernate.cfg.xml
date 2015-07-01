@@ -17,6 +17,7 @@
         <mapping class="Library.entities.Library"></mapping>
         <mapping class="Library.entities.Employee"></mapping>
         <mapping class="Library.entities.Janitor"></mapping>
+        <mapping class="Library.entities.Manager"></mapping>
         <mapping class="Library.entities.Librarian"></mapping>
         <!--<mapping resource="Book.hbm.xml"/>-->
 
