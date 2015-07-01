@@ -22,6 +22,10 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Page> pages;
 
+    @ManyToOne
+    @JoinColumn(name = "LIBRARY_ID")
+    private Library library;
+
 
 
     public Book(String title, List<Page> pages) {

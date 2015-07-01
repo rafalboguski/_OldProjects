@@ -14,6 +14,10 @@
 
         <mapping class="Library.entities.Book"></mapping>
         <mapping class="Library.entities.Page"></mapping>
+        <mapping class="Library.entities.Library"></mapping>
+        <mapping class="Library.entities.Employee"></mapping>
+        <mapping class="Library.entities.Janitor"></mapping>
+        <mapping class="Library.entities.Librarian"></mapping>
         <!--<mapping resource="Book.hbm.xml"/>-->
 
     </session-factory>
