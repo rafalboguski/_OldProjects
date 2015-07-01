@@ -1,6 +1,7 @@
 package Library.utils;
 
 import Library.dao.BookDAOImpl;
+import Library.dao.PageDAOImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -20,7 +21,11 @@ public class HibernateUtil {
         }
     }
 
-    private static final BookDAOImpl dao = new BookDAOImpl();
+    private static final BookDAOImpl bookDAO = new BookDAOImpl();
+    private static final PageDAOImpl pageDAO = new PageDAOImpl();
+
+
+    //----------------------------------------------------------------------------
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
@@ -31,6 +36,12 @@ public class HibernateUtil {
     }
 
     public static BookDAOImpl Book() {
-        return dao;
+        return bookDAO;
     }
+
+    public static PageDAOImpl Page() {
+        return pageDAO;
+    }
+
+    //----------------------------------------------------------------------------
 }

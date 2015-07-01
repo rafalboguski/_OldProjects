@@ -9,8 +9,6 @@ import static Library.utils.HibernateUtil.*;
 public class ManageLibrary {
 
 
-
-
     public static void main(String[] argv) {
 
         session().beginTransaction();

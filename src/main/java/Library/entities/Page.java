@@ -29,6 +29,9 @@ public class Page {
     public Page() {
     }
 
+
+    //----------------------------------------------------------------------------
+
     public int getPage_number() {
         return page_number;
     }
@@ -60,6 +63,8 @@ public class Page {
     public void setId(int id) {
         this.id = id;
     }
+
+    //----------------------------------------------------------------------------
 
     @Override
     public String toString() {
