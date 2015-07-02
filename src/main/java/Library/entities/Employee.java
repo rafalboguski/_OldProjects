@@ -13,6 +13,12 @@ public class Employee {
     @GeneratedValue()
     private int id;
 
+    private String name;
+    private String surname;
+    private String bankAccountNumber;
+    private boolean active;
+
+
     @ManyToOne
     @JoinColumn(name = "LIBRARY_ID")
     private Library library;

@@ -22,7 +22,7 @@ public class ManageLibrary {
 //
 //        for (Book b : Book().findAll())
 //            System.out.println(b);
-//
+
         session().getTransaction().commit();
         session().close();
         System.exit(0);

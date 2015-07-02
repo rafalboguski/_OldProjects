@@ -1,8 +1,6 @@
 package Library.entities;
 
 import Library.utils.HibernateUtil;
-import com.googlecode.genericdao.dao.hibernate.GenericDAO;
-import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,25 +16,37 @@ public class Book {
     private int id;
 
     private String title;
+    private String author;
+    private int releaseYear;
 
-    @OneToMany(mappedBy = "book")
+
+    @OneToMany(mappedBy = "book", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Page> pages;
+
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID")
+    private Customer owner;
 
     @ManyToOne
     @JoinColumn(name = "LIBRARY_ID")
     private Library library;
 
 
-
-    public Book(String title, List<Page> pages) {
+    public Book(String title, String author, int year, ArrayList<Page> pages, Library library) {
         this.title = title;
+        this.author = author;
+        this.releaseYear = year;
         this.pages = pages != null ? pages : new ArrayList<Page>();
+        this.library = library;
+
     }
 
     public Book() {
-        this.title = "null";
-        this.pages = null;
+
     }
+
+
+    //----------------------------------------------------------------------------
 
 
     public void addPage(Page page) {
@@ -51,14 +61,24 @@ public class Book {
         return pages;
     }
 
-    public void setPages(List<Page> pages) {
-        this.pages = pages;
-    }
+
 
     //----------------------------------------------------------------------------
 
     @Override
     public String toString() {
         return "Book: " + title + "  " + pages;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
     }
 }

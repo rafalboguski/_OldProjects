@@ -9,11 +9,11 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import java.util.List;
 
 public class Manage {
-    private static SessionFactory factory;
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
 
+        SessionFactory factory;
         try{
             factory = new AnnotationConfiguration().configure().buildSessionFactory();
         }catch (Throwable ex) {

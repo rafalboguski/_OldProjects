@@ -19,6 +19,7 @@
         <mapping class="Library.entities.Janitor"></mapping>
         <mapping class="Library.entities.Manager"></mapping>
         <mapping class="Library.entities.Librarian"></mapping>
+        <mapping class="Library.entities.Customer"></mapping>
         <!--<mapping resource="Book.hbm.xml"/>-->
 
     </session-factory>
