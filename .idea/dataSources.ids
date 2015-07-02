@@ -23,7 +23,7 @@
       <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LIBRARY_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="CUSTOMER_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="SQL150702130947130" columns="BOOK_ID"/>
+      <primary-key name="SQL150702154431080" columns="BOOK_ID"/>
       <foreign-key name="FK_AD2UU9JOO40U61X9TFJNP42LI" columns="CUSTOMER_ID" ref-table="CUSTOMER" ref-schema="APP" ref-catalog="" ref-columns="CUSTOMER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_HVPJN7QGDT35OACIQISTMUGGT" columns="LIBRARY_ID" ref-table="LIBRARY" ref-schema="APP" ref-catalog="" ref-columns="LIBRARY_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_3XLMS9CFMC5FF5746EKSQM7XC" table="PAGE" schema="APP" catalog="" columns="BOOK_ID"/>
@@ -35,7 +35,7 @@
       <column name="SURNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="SUSPENDED" sqlType="BOOLEAN" precision="1" scale="0" nullable="false" jdbcType="16"/>
       <column name="TELEPHONE" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="SQL150702123733500" columns="CUSTOMER_ID"/>
+      <primary-key name="SQL150702154431270" columns="CUSTOMER_ID"/>
       <exported-key name="FK_AD2UU9JOO40U61X9TFJNP42LI" table="BOOK" schema="APP" catalog="" columns="CUSTOMER_ID"/>
     </table>
     <table name="EMPLOYEE" schema="APP" catalog="" type="TABLE">
@@ -46,7 +46,7 @@
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="SURNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LIBRARY_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="SQL150702123733620" columns="ID"/>
+      <primary-key name="SQL150702154431400" columns="ID"/>
       <foreign-key name="FK_16W03F0IBRNP5IABEC8CQ14ML" columns="LIBRARY_ID" ref-table="LIBRARY" ref-schema="APP" ref-catalog="" ref-columns="LIBRARY_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_93T6960CA9DCTKBQY4UY72THU" table="JANITOR" schema="APP" catalog="" columns="ID"/>
       <exported-key name="FK_TBXYM6UD386G0OF4RR4UJ2HIH" table="LIBRARIAN" schema="APP" catalog="" columns="ID"/>
@@ -54,12 +54,12 @@
     </table>
     <table name="JANITOR" schema="APP" catalog="" type="TABLE">
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="SQL150702123733750" columns="ID"/>
+      <primary-key name="SQL150702154431530" columns="ID"/>
       <foreign-key name="FK_93T6960CA9DCTKBQY4UY72THU" columns="ID" ref-table="EMPLOYEE" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="LIBRARIAN" schema="APP" catalog="" type="TABLE">
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="SQL150702123733890" columns="ID"/>
+      <primary-key name="SQL150702154431670" columns="ID"/>
       <foreign-key name="FK_TBXYM6UD386G0OF4RR4UJ2HIH" columns="ID" ref-table="EMPLOYEE" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="LIBRARY" schema="APP" catalog="" type="TABLE">
@@ -68,14 +68,14 @@
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="POSTCODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="STREET" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SQL150702123734050" columns="LIBRARY_ID"/>
+      <primary-key name="SQL150702154431860" columns="LIBRARY_ID"/>
       <exported-key name="FK_HVPJN7QGDT35OACIQISTMUGGT" table="BOOK" schema="APP" catalog="" columns="LIBRARY_ID"/>
       <exported-key name="FK_16W03F0IBRNP5IABEC8CQ14ML" table="EMPLOYEE" schema="APP" catalog="" columns="LIBRARY_ID"/>
     </table>
     <table name="MANAGER" schema="APP" catalog="" type="TABLE">
       <column name="MANAGER_SALARY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="SQL150702123734190" columns="ID"/>
+      <primary-key name="SQL150702154432070" columns="ID"/>
       <foreign-key name="FK_5I5XB0K7GXWVHHSK80CWRH207" columns="ID" ref-table="EMPLOYEE" ref-schema="APP" ref-catalog="" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="PAGE" schema="APP" catalog="" type="TABLE">
@@ -83,7 +83,7 @@
       <column name="PAGE_NUMBER" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="TEXT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="BOOK_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="SQL150702131118350" columns="ID"/>
+      <primary-key name="SQL150702155245470" columns="ID"/>
       <foreign-key name="FK_3XLMS9CFMC5FF5746EKSQM7XC" columns="BOOK_ID" ref-table="BOOK" ref-schema="APP" ref-catalog="" ref-columns="BOOK_ID" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="SYSALIASES" schema="SYS" catalog="" type="SYSTEM TABLE">

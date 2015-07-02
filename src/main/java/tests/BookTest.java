@@ -17,8 +17,13 @@ import static org.junit.Assert.*;
 public class BookTest {
 
 
+    private boolean setUpIsDone = false;
+
     @Before
     public void setUp() throws Exception {
+        if (setUpIsDone) {
+            return;
+        }
         HibernateUtil.getCurrentSession().beginTransaction();
 
         Library glowna = new Library();
@@ -35,31 +40,30 @@ public class BookTest {
         HibernateUtil.getCurrentSession().close();
     }
 
-//
-//    @Test
-//    public void testCreate(){
-//
-//        HibernateUtil.getCurrentSession().beginTransaction();
-//
-//        Search search = new Search();
-//        search.addFilterEqual("title", "Year 1984");
-//        List<Book> books = HibernateUtil.Book().search(search);
-//
-//        assertEquals(1,books.size());
-//        Book result = books.get(0);
-//        assertEquals(result.getTitle(), "Year 1984");
-//        assertEquals(result.getAuthor(), "Orwell");
-//        assertEquals(result.getTitle(), "Year 1984");
-//        assertEquals(result.getPages().get(0).getText(), "Hello");
-//
-//        HibernateUtil.getCurrentSession().getTransaction().commit();
-//        HibernateUtil.getCurrentSession().close();
-//
-//    }
+
+    @Test
+    public void testCreate() {
+
+        HibernateUtil.getCurrentSession().beginTransaction();
+
+        Search search = new Search();
+        search.addFilterEqual("title", "Year 1984");
+        List<Book> books = HibernateUtil.Book().search(search);
+
+        assertEquals(1, books.size());
+        Book result = books.get(0);
+        assertEquals(result.getTitle(), "Year 1984");
+        assertEquals(result.getAuthor(), "Orwell");
+        assertEquals(result.getTitle(), "Year 1984");
+        assertEquals(result.getPages().get(0).getText(), "Hello");
+
+        HibernateUtil.getCurrentSession().getTransaction().commit();
+        HibernateUtil.getCurrentSession().close();
+
+    }
 
     @Test
     public void testDelete() {
-
 
         HibernateUtil.getCurrentSession().beginTransaction();
 
@@ -72,9 +76,11 @@ public class BookTest {
         HibernateUtil.Book().remove(result);
 
         books = HibernateUtil.Book().search(search);
-        assertEquals(0, books.size());
+        assertNotNull(books.get(0));
 
         HibernateUtil.getCurrentSession().getTransaction().commit();
         HibernateUtil.getCurrentSession().close();
     }
+
+
 }

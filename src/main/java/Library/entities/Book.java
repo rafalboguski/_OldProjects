@@ -52,7 +52,6 @@ public class Book {
     public void addPage(Page page) {
         pages.add(page);
         page.setBook(this);
-        HibernateUtil.getCurrentSession().save(page);
     }
 
     //----------------------------------------------------------------------------
