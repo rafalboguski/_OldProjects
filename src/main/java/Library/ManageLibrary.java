@@ -19,6 +19,10 @@ public class ManageLibrary {
 
         Book().moveBookTOLibrary(Book().find("Zielnik Polski"), Library().find("Studencka"));
 
+        Book().moveBookTOCustomer(Book().find("Zielnik Polski"), Customer().find(1));
+        Book().moveBookTOCustomer(Book().find("Neapol"),Customer().find(2));
+        Book().returnBookToLibrary(Book().find("Neapol"));
+
         session().getTransaction().commit();
         session().close();
 

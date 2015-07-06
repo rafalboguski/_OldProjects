@@ -62,4 +62,14 @@ public class Book {
     public Library getLibrary() {
         return library;
     }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
+    }
+
+
 }

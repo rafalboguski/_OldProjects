@@ -31,7 +31,7 @@ public class Customer {
     @Column(nullable = false)
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Book> books = new ArrayList<Book>();
 
     public Customer(String name, String surname, String telephone) {
@@ -43,5 +43,14 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public void addBook(Book book){
+        books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        books.remove(book);
+
     }
 }
