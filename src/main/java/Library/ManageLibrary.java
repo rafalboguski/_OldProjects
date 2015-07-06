@@ -4,6 +4,7 @@ import Library.entities.*;
 import org.hibernate.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static Library.utils.HibernateUtil.*;
 import static spark.Spark.*;
@@ -27,12 +28,24 @@ public class ManageLibrary {
         session().close();
 
 
-        get("/hello", (req, res) -> "Hello World");
+        get("/hello", (req, res) -> {
+            session().beginTransaction();
+
+            String text = "Books: ";
+            List<Book> list =Book().findAll();
+            for(Book b :list)
+                text+=(b);
 
 
-        get("/hello/:name", (request, response) -> {
-            return "Hello: " + request.params(":name");
+
+            session().getTransaction().commit();
+            session().close();
+            return text;
         });
+
+
+
+
     }
 
     private static void populate() {

@@ -50,4 +50,7 @@ public class Library {
     }
 
 
+    public String getName() {
+        return name;
+    }
 }
