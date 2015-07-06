@@ -1,7 +1,11 @@
 package Library.utils;
 
 import Library.dao.BookDAOImpl;
-import Library.dao.PageDAOImpl;
+import Library.dao.CustomerDAOImpl;
+import Library.dao.EmployeeDAOImpl;
+import Library.dao.LibraryDAOImpl;
+import Library.entities.Employee;
+import Library.entities.Library;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -22,7 +26,9 @@ public class HibernateUtil {
     }
 
     private static final BookDAOImpl bookDAO = new BookDAOImpl();
-    private static final PageDAOImpl pageDAO = new PageDAOImpl();
+    private static final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+    private static final LibraryDAOImpl LibraryDAO = new LibraryDAOImpl();
+    private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
 
 
     //----------------------------------------------------------------------------
@@ -35,13 +41,24 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession();
     }
 
+    //----------------------------------------------------------------------------
+
     public static BookDAOImpl Book() {
         return bookDAO;
     }
 
-    public static PageDAOImpl Page() {
-        return pageDAO;
+    public static CustomerDAOImpl Customer() {
+        return customerDAO;
     }
+
+    public static LibraryDAOImpl Library() {
+        return LibraryDAO;
+    }
+
+    public static EmployeeDAOImpl Employee() {
+        return employeeDAO;
+    }
+
 
     //----------------------------------------------------------------------------
 }

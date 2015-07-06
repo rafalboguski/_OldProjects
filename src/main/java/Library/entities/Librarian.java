@@ -8,5 +8,11 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Librarian")
 public class Librarian extends Employee {
 
+    public Librarian() {
+    }
 
+    public Librarian(String name, String surname, String bankAccountNumber) {
+
+        super(name, surname, bankAccountNumber);
+    }
 }

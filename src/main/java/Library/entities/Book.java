@@ -20,8 +20,6 @@ public class Book {
     private int releaseYear;
 
 
-    @OneToMany(mappedBy = "book", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Page> pages;
 
     @ManyToOne
     @JoinColumn(name = "CUSTOMER_ID")
@@ -32,41 +30,20 @@ public class Book {
     private Library library;
 
 
-    public Book(String title, String author, int year, ArrayList<Page> pages, Library library) {
+    public Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.releaseYear = year;
-        this.pages = pages != null ? pages : new ArrayList<Page>();
-        this.library = library;
 
     }
 
     public Book() {
-
     }
-
-
-    //----------------------------------------------------------------------------
-
-
-    public void addPage(Page page) {
-        pages.add(page);
-        page.setBook(this);
-    }
-
-    //----------------------------------------------------------------------------
-
-    public List<Page> getPages() {
-        return pages;
-    }
-
-
-
-    //----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "Book: " + title + "  " + pages;
+        return "Book: " + title + "  ";
     }
 
     public String getTitle() {
@@ -77,7 +54,12 @@ public class Book {
         return author;
     }
 
+
     public void setLibrary(Library library) {
         this.library = library;
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 }

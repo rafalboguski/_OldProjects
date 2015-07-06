@@ -23,5 +23,17 @@ public class Employee {
     @JoinColumn(name = "LIBRARY_ID")
     private Library library;
 
+    public Employee(String name, String surname, String bankAccountNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.bankAccountNumber = bankAccountNumber;
+        this.active = true;
+    }
 
+    public Employee() {
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
 }

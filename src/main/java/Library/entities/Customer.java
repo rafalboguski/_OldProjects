@@ -1,6 +1,9 @@
 package Library.entities;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,14 +16,32 @@ public class Customer {
     @Column(name = "CUSTOMER_ID")
     private int id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String surname;
+
+    @Column(nullable = false)
     private boolean suspended;
-    private int telephone;
+
+    @Column(nullable = false)
+    private String telephone;
+
+    @Column(nullable = false)
     private Date registrationDate;
 
     @OneToMany(mappedBy = "owner")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<Book>();
 
+    public Customer(String name, String surname, String telephone) {
+        this.name = name;
+        this.surname = surname;
+        this.suspended = false;
+        this.telephone = telephone;
+        this.registrationDate = new Date();
+    }
 
+    public Customer() {
+    }
 }
