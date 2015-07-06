@@ -6,7 +6,7 @@ import org.hibernate.*;
 import java.util.ArrayList;
 
 import static Library.utils.HibernateUtil.*;
-
+import static spark.Spark.*;
 public class ManageLibrary {
 
 
@@ -20,13 +20,19 @@ public class ManageLibrary {
         Book().moveBookTOLibrary(Book().find("Zielnik Polski"), Library().find("Studencka"));
 
         Book().moveBookTOCustomer(Book().find("Zielnik Polski"), Customer().find(1));
-        Book().moveBookTOCustomer(Book().find("Neapol"),Customer().find(2));
+        Book().moveBookTOCustomer(Book().find("Neapol"), Customer().find(2));
         Book().returnBookToLibrary(Book().find("Neapol"));
 
         session().getTransaction().commit();
         session().close();
 
-        System.exit(0);
+
+        get("/hello", (req, res) -> "Hello World");
+
+
+        get("/hello/:name", (request, response) -> {
+            return "Hello: " + request.params(":name");
+        });
     }
 
     private static void populate() {
