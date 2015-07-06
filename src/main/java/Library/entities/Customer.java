@@ -53,4 +53,8 @@ public class Customer {
         books.remove(book);
 
     }
+
+    public int getId() {
+        return id;
+    }
 }

@@ -43,7 +43,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book: " + title + "  ";
+        return "Book [title="+title+", author="+author+", releaseYear="+releaseYear+", library_id="+library.getId()+", owner_id="+owner+"]";
     }
 
     public String getTitle() {
