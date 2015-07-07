@@ -25,10 +25,10 @@ public class HibernateUtil {
         }
     }
 
-    private static final BookDAOImpl bookDAO = new BookDAOImpl();
-    private static final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
-    private static final LibraryDAOImpl LibraryDAO = new LibraryDAOImpl();
-    private static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+    public static final BookDAOImpl     bookDAO     = new BookDAOImpl();
+    public static final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+    public static final LibraryDAOImpl  libraryDAO  = new LibraryDAOImpl();
+    public static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
 
 
     //----------------------------------------------------------------------------
@@ -41,24 +41,5 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession();
     }
 
-    //----------------------------------------------------------------------------
 
-    public static BookDAOImpl Book() {
-        return bookDAO;
-    }
-
-    public static CustomerDAOImpl Customer() {
-        return customerDAO;
-    }
-
-    public static LibraryDAOImpl Library() {
-        return LibraryDAO;
-    }
-
-    public static EmployeeDAOImpl Employee() {
-        return employeeDAO;
-    }
-
-
-    //----------------------------------------------------------------------------
 }

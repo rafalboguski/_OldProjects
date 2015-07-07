@@ -1,15 +1,11 @@
 package Library;
 
 import Library.entities.*;
-import Library.utils.HibernateUtil;
-import com.google.gson.Gson;
-import net.sf.json.JSONObject;
+
 
 import java.util.List;
 
-import static Library.utils.HibernateUtil.Book;
-import static Library.utils.HibernateUtil.Library;
-import static Library.utils.HibernateUtil.getCurrentSession;
+import static Library.utils.HibernateUtil.*;
 
 
 public class Controller {
@@ -18,20 +14,20 @@ public class Controller {
 
         book.getLibrary().removeBook(book);
         newLibrary.addBook(book);
-        HibernateUtil.Library().save(newLibrary);
+        libraryDAO.save(newLibrary);
     }
 
     public void moveBookTOCustomer(Book book, Customer customer) {
         customer.addBook(book);
         book.setOwner(customer);
-        HibernateUtil.Customer().save(customer);
+        customerDAO.save(customer);
     }
 
     public void returnBookToLibrary(Book book) {
         Customer owner = book.getOwner();
         owner.removeBook(book);
         book.setOwner(null);
-        HibernateUtil.Customer().save(owner);
+        customerDAO.save(owner);
     }
 
 
@@ -39,9 +35,9 @@ public class Controller {
     public void populate() {
         getCurrentSession().beginTransaction();
 
-        HibernateUtil.Customer().save(new Customer("Jan", "Kowalski", "608237394"));
-        HibernateUtil.Customer().save(new Customer("Jon", "Smith", "34344594"));
-        HibernateUtil.Customer().save(new Customer("Katy", "Rosenberg", "30843394"));
+        customerDAO.save(new Customer("Jan", "Kowalski", "608237394"));
+        customerDAO.save(new Customer("Jon", "Smith", "34344594"));
+        customerDAO.save(new Customer("Katy", "Rosenberg", "30843394"));
 
         Library lib = new Library("Studencka",
                 "02-123",
@@ -52,7 +48,7 @@ public class Controller {
 
         lib.addEmployee(new Manager("Tomasz", "Majewski", "233423234234234", "50000"));
         lib.addEmployee(new Librarian("Joanna", "Metzc", "23222489042690"));
-        Library().save(lib);
+        libraryDAO.save(lib);
 
         lib = new Library("Malinowa",
                 "22-450",
@@ -61,8 +57,7 @@ public class Controller {
         ;
         lib.addBook(new Book("WWII", "Davis", 2004));
         lib.addBook(new Book("Zielnik Polski", "Tyl", 1999));
-        ;
-        Library().save(lib);
+        libraryDAO.save(lib);
 
 
         getCurrentSession().getTransaction().commit();
@@ -73,16 +68,14 @@ public class Controller {
         getCurrentSession().beginTransaction();
 
         String text = "[";
-        List<Book> list = Book().findAll();
-        for (Book b : list) {
-            JSONObject obj = new JSONObject();
+        List<Book> list = bookDAO.findAll();
+        for (int i =0;i<list.size();i++) {
+            text+=list.get(i).toJson();
 
-            obj.put("title", b.getTitle());
-            obj.put("author", b.getAuthor());
-            obj.put("library_id", b.getLibrary().getId());
-            //obj.put("owner_id", b.getOwner().getId());
+            if(list.size()>1 && i<list.size()-1){
+                text+=",";
+            }
 
-            text += obj +",";
         }
         text+="]";
 

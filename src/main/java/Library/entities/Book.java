@@ -1,6 +1,7 @@
 package Library.entities;
 
 import Library.utils.HibernateUtil;
+import com.google.gson.annotations.Expose;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,8 +16,11 @@ public class Book {
     @Column(name = "BOOK_ID")
     private int id;
 
+    @Expose
     private String title;
+    @Expose
     private String author;
+    @Expose
     private int releaseYear;
 
 
@@ -27,7 +31,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "LIBRARY_ID")
-    private Library library;
+    private  Library library;
 
 
     public Book(String title, String author, int year) {
@@ -44,6 +48,20 @@ public class Book {
     @Override
     public String toString() {
         return "Book [title="+title+", author="+author+", releaseYear="+releaseYear+", library_id="+library.getId()+", owner_id="+owner+"]";
+    }
+
+    public String toJson(){
+
+        String tmp = "{ \"title\":\"" + title +
+                "\",\"author\":\"" + author +
+                "\",\"releaseYear\":\"" + releaseYear +
+                "\",\"library\":\"" + library.getId() +
+                "\"";
+        if (owner != null)
+            tmp += ",\"owner\":\"" + owner.getId() + "\"";
+
+        return tmp + "}";
+
     }
 
     public String getTitle() {
