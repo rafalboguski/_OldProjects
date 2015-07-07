@@ -1,12 +1,5 @@
 package Library;
 
-import Library.entities.*;
-import org.hibernate.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static Library.utils.HibernateUtil.*;
 import static spark.Spark.*;
 public class View {
 
@@ -30,11 +23,13 @@ public class View {
 //        getCurrentSession().close();
 
 
-        get("/hello", (req, res) -> {
-
-            return controller.getAllBooks();
+        get("/book", (req, res) -> {
+            return controller.getBooksJson();
         });
 
+        get("/library", (req, res) -> {
+            return controller.getLibraysJson();
+        });
 
 
 

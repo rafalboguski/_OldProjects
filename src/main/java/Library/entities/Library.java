@@ -57,4 +57,8 @@ public class Library {
     public int getId() {
         return id;
     }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 }
