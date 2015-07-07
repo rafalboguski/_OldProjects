@@ -45,24 +45,7 @@ public class Book {
     }
 //----------------------------------------------------------------------------
 
-    @Override
-    public String toString() {
-        return "Book [title="+title+", author="+author+", releaseYear="+releaseYear+", library_id="+library.getId()+", owner_id="+owner+"]";
-    }
 
-    public String toJson(){
-
-        String tmp = "{ \"title\":\"" + title +
-                "\",\"author\":\"" + author +
-                "\",\"releaseYear\":\"" + releaseYear +
-                "\",\"library\":\"" + library.getId() +
-                "\"";
-        if (owner != null)
-            tmp += ",\"owner\":\"" + owner.getId() + "\"";
-
-        return tmp + "}";
-
-    }
 
     public String getTitle() {
         return title;
@@ -89,6 +72,9 @@ public class Book {
         this.owner = owner;
     }
 
+    public int getReleaseYear() {
+        return releaseYear;
+    }
 
     public int getId() {
         return id;

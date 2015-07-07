@@ -28,7 +28,7 @@ public class View {
         });
 
         get("/library", (req, res) -> {
-            return controller.getLibraysJson();
+            return controller.getLibrarysJson();
         });
 
 

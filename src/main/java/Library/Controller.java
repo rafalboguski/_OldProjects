@@ -1,6 +1,8 @@
 package Library;
 
 import Library.entities.*;
+import Library.serializers.BookSerializer;
+import Library.serializers.LibrarySerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -68,47 +70,28 @@ public class Controller {
     public String getBooksJson() {
         getCurrentSession().beginTransaction();
 
-        String text = "[";
         List<Book> list = bookDAO.findAll();
-        for (int i = 0; i < list.size(); i++) {
-            text += list.get(i).toJson();
-            if (list.size() > 1 && i < list.size() - 1)
-                text += ",";
-        }
-        text += "]";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Book.class, new BookSerializer());
+        gsonBuilder.setPrettyPrinting();
+
 
         getCurrentSession().getTransaction().commit();
         getCurrentSession().close();
-        return text;
+        return gsonBuilder.create().toJson(list);
     }
 
-    public String getLibraysJson() {
+    public String getLibrarysJson() {
         getCurrentSession().beginTransaction();
 
-//        String text = "[";
         List<Library> list = libraryDAO.findAll();
-//        for (int i = 0; i < list.size(); i++) {
-//            text += list.get(i).toJson();
-//            if (list.size() > 1 && i < list.size() - 1)
-//                text += ",";
-//        }
-//        text += "]";
-        //String text = new Gson().toJson(list);
-
-
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Library.class, new LibrarySerializer());
         gsonBuilder.setPrettyPrinting();
-        Gson gson = gsonBuilder.create();
 
-
-        String json = gson.toJson(list);
-
-
-
-
-
+        String json = gsonBuilder.create().toJson(list);
 
         getCurrentSession().getTransaction().commit();
         getCurrentSession().close();

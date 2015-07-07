@@ -1,5 +1,8 @@
 package Library.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +22,12 @@ public class Library {
     private String postCode;
 
 
-    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "library", cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Employee> employees = new ArrayList<Employee>();
 
-    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "library", cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Book> books = new ArrayList<Book>();
 
     public Library(String name, String postCode, String street, String city) {
@@ -60,5 +65,21 @@ public class Library {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public String getPostCode() {
+        return postCode;
     }
 }

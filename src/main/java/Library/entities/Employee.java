@@ -36,4 +36,8 @@ public class Employee {
     public void setLibrary(Library library) {
         this.library = library;
     }
+
+    public int getId() {
+        return id;
+    }
 }
