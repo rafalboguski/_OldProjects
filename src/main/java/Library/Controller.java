@@ -3,8 +3,9 @@ package Library;
 import Library.entities.*;
 import Library.serializers.BookSerializer;
 import Library.serializers.LibrarySerializer;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mysema.query.hql.HQLQuery;
+import com.mysema.query.hql.hibernate.HibernateQuery;
 
 
 import java.util.List;
@@ -96,5 +97,24 @@ public class Controller {
         getCurrentSession().getTransaction().commit();
         getCurrentSession().close();
         return json;
+    }
+
+    public String testDsl() {
+
+        QBook book = QBook.book;
+
+        getCurrentSession().beginTransaction();
+        HQLQuery query = new HibernateQuery(getCurrentSession());
+
+
+        Book b = query.from(book)
+                .where(book.id.eq(1))
+                .uniqueResult(book);
+
+
+        getCurrentSession().getTransaction().commit();
+        getCurrentSession().close();
+
+        return b==null?"Not found":b.toString();
     }
 }

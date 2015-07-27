@@ -79,4 +79,16 @@ public class Book {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", owner=" + owner +
+                ", library=" + library.getName() +
+                '}';
+    }
 }

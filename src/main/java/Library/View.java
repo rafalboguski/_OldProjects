@@ -31,6 +31,10 @@ public class View {
             return controller.getLibrarysJson();
         });
 
+        get("/dsl", (req, res) -> {
+            return controller.testDsl();
+        });
+
 
 
     }

@@ -1,7 +1,5 @@
 package Library.entities;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
