@@ -1,11 +1,7 @@
 package Library.utils;
 
-import Library.dao.BookDAOImpl;
-import Library.dao.CustomerDAOImpl;
-import Library.dao.EmployeeDAOImpl;
-import Library.dao.LibraryDAOImpl;
-import Library.entities.Employee;
-import Library.entities.Library;
+
+import com.mysema.query.hql.hibernate.HibernateQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -25,29 +21,26 @@ public class HibernateUtil {
         }
     }
 
-    public static final BookDAOImpl     bookDAO     = new BookDAOImpl();
-    public static final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
-    public static final LibraryDAOImpl  libraryDAO  = new LibraryDAOImpl();
-    public static final EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
 
 
-    //----------------------------------------------------------------------------
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public static Session getCurrentSession() {
+    public static Session db(){
         return sessionFactory.getCurrentSession();
     }
 
-    public static void db(){
-        getCurrentSession().beginTransaction();
+    public static void dbBegin(){
+        sessionFactory.getCurrentSession().beginTransaction();
     }
 
     public static void dbEnd(){
-        getCurrentSession().getTransaction().commit();
-        getCurrentSession().close();
+        sessionFactory.getCurrentSession().getTransaction().commit();
+        sessionFactory.getCurrentSession().close();
+    }
+
+    // QueryDsl
+
+    public static HibernateQuery query(){
+        return new HibernateQuery(db());
     }
 
 }

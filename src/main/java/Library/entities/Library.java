@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Entity @Data
-public class Library {
+public class Library extends DB_Object {
 
     @Id
     @GeneratedValue

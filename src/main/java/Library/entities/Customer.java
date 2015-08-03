@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Entity @Data
-public class Customer {
+public class Customer extends DB_Object {
 
     @Id
     @GeneratedValue

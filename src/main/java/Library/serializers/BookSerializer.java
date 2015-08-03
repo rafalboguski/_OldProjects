@@ -1,11 +1,9 @@
 package Library.serializers;
 
 import Library.entities.Book;
-import Library.entities.Library;
 import com.google.gson.*;
-
 import java.lang.reflect.Type;
-import java.util.ArrayList;
+
 
 public class BookSerializer implements JsonSerializer {
 

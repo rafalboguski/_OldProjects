@@ -1,19 +1,15 @@
 package Library.entities;
 
-import Library.utils.HibernateUtil;
+
 import com.google.gson.annotations.Expose;
-import com.mysema.query.hql.hibernate.HibernateQuery;
-import com.mysema.query.types.expr.EBoolean;
+
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-import static Library.utils.HibernateUtil.getCurrentSession;
 
 @Entity @Data
-public class Book {
+public class Book extends DB_Object {
 
 
     @Id
@@ -61,6 +57,5 @@ public class Book {
                 ", library=" + library.getName() +
                 '}';
     }
-
 
 }
