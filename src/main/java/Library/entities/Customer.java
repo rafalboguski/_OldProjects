@@ -1,12 +1,14 @@
 package Library.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-@Entity
+@Entity @Data
 public class Customer {
 
     @Id
@@ -52,7 +54,5 @@ public class Customer {
 
     }
 
-    public int getId() {
-        return id;
-    }
+
 }

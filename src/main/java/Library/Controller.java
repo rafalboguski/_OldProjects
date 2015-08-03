@@ -3,32 +3,34 @@ package Library;
 import Library.entities.*;
 import Library.serializers.BookSerializer;
 import Library.serializers.LibrarySerializer;
+import Library.utils.MyUncaughtExceptionHandler;
 import com.google.gson.GsonBuilder;
 import com.mysema.query.hql.HQLQuery;
 import com.mysema.query.hql.hibernate.HibernateQuery;
 
 
 import java.util.List;
+import java.util.Random;
 
 import static Library.utils.HibernateUtil.*;
 
 
 public class Controller {
 
-    public void moveBookTOLibrary(Book book, Library newLibrary) {
+    synchronized public void moveBookTOLibrary(Book book, Library newLibrary) {
 
         book.getLibrary().removeBook(book);
         newLibrary.addBook(book);
         libraryDAO.save(newLibrary);
     }
 
-    public void moveBookTOCustomer(Book book, Customer customer) {
+    synchronized public void moveBookTOCustomer(Book book, Customer customer) {
         customer.addBook(book);
         book.setOwner(customer);
         customerDAO.save(customer);
     }
 
-    public void returnBookToLibrary(Book book) {
+    synchronized public void returnBookToLibrary(Book book) {
         Customer owner = book.getOwner();
         owner.removeBook(book);
         book.setOwner(null);
@@ -68,7 +70,7 @@ public class Controller {
         getCurrentSession().close();
     }
 
-    public String getBooksJson() {
+    synchronized public String getBooksJson() {
         getCurrentSession().beginTransaction();
 
         List<Book> list = bookDAO.findAll();
@@ -83,7 +85,7 @@ public class Controller {
         return gsonBuilder.create().toJson(list);
     }
 
-    public String getLibrarysJson() {
+    synchronized public String getLibrarysJson() {
         getCurrentSession().beginTransaction();
 
         List<Library> list = libraryDAO.findAll();
@@ -99,21 +101,29 @@ public class Controller {
         return json;
     }
 
-    public String testDsl() {
-
+    synchronized public String testDsl(Integer id) {
+        Thread.currentThread().setUncaughtExceptionHandler(new MyUncaughtExceptionHandler());
         QBook book = QBook.book;
 
-        getCurrentSession().beginTransaction();
+        db();
         HQLQuery query = new HibernateQuery(getCurrentSession());
 
 
         Book b = query.from(book)
-                .where(book.id.eq(1))
+                .where(book.id.eq(id))
                 .uniqueResult(book);
 
+        query = new HibernateQuery(getCurrentSession());
+        List<Book> res = query.from(book).where(book.id.gt(1)).list(book);
 
-        getCurrentSession().getTransaction().commit();
-        getCurrentSession().close();
+        System.out.println("-------------"+res.size());
+        for(Book x:res){
+            System.out.println(x);
+        }
+
+        dbEnd();
+
+
 
         return b==null?"Not found":b.toString();
     }

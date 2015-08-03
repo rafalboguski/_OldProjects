@@ -2,12 +2,17 @@ package Library.entities;
 
 import Library.utils.HibernateUtil;
 import com.google.gson.annotations.Expose;
+import com.mysema.query.hql.hibernate.HibernateQuery;
+import com.mysema.query.types.expr.EBoolean;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+import static Library.utils.HibernateUtil.getCurrentSession;
+
+@Entity @Data
 public class Book {
 
 
@@ -43,42 +48,7 @@ public class Book {
 
     public Book() {
     }
-//----------------------------------------------------------------------------
 
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-
-    public void setLibrary(Library library) {
-        this.library = library;
-    }
-
-    public Library getLibrary() {
-        return library;
-    }
-
-    public Customer getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Customer owner) {
-        this.owner = owner;
-    }
-
-    public int getReleaseYear() {
-        return releaseYear;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     @Override
     public String toString() {
@@ -91,4 +61,6 @@ public class Book {
                 ", library=" + library.getName() +
                 '}';
     }
+
+
 }

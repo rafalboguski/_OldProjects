@@ -1,5 +1,6 @@
 package Library.entities;
 
+import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
+@Entity @Data
 public class Library {
 
     @Id
@@ -55,31 +56,8 @@ public class Library {
     }
 
 
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
+//    @Override
+//    public String toString() {
+//        return "Library{";
+//    }
 }

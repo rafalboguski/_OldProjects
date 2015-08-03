@@ -1,10 +1,14 @@
 package Library;
 
+import Library.utils.*;
+
 import static spark.Spark.*;
 public class View {
 
 
-    public static void main(String[] argv) {
+    synchronized public static void main(String[] argv) {
+
+//        Thread.setDefaultUncaughtExceptionHandler( MyUncaughtExceptionHandler );
 
         Controller controller = new Controller();
 
@@ -31,8 +35,8 @@ public class View {
             return controller.getLibrarysJson();
         });
 
-        get("/dsl", (req, res) -> {
-            return controller.testDsl();
+        get("/dsl/:id", (req, res) -> {
+            return controller.testDsl(Integer.valueOf(req.params("id")));
         });
 
 

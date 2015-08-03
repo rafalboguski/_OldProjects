@@ -1,9 +1,11 @@
 package Library.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 
-@Entity
+@Entity @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "EMPLOYEE_TYPE", discriminatorType = DiscriminatorType.STRING)
 
@@ -33,11 +35,7 @@ public class Employee {
     public Employee() {
     }
 
-    public void setLibrary(Library library) {
-        this.library = library;
-    }
 
-    public int getId() {
-        return id;
-    }
+
+
 }

@@ -41,5 +41,13 @@ public class HibernateUtil {
         return sessionFactory.getCurrentSession();
     }
 
+    public static void db(){
+        getCurrentSession().beginTransaction();
+    }
+
+    public static void dbEnd(){
+        getCurrentSession().getTransaction().commit();
+        getCurrentSession().close();
+    }
 
 }
