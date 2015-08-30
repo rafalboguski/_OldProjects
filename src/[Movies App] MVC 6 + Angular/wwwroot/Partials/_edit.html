@@ -1,0 +1,44 @@
+﻿<style>
+    input.ng-invalid.ng-touched {
+        background-color: #FA787E;
+    }
+
+    input.ng-valid.ng-touched {
+        background-color: #78FA89;
+    }
+</style>
+
+<div class="bg-danger validationErrors" ng-show="validationErrors">
+    <ul>
+        <li ng-repeat="error in validationErrors">{{error}}</li>
+    </ul>
+</div>
+
+<div class="form-group">
+    <label for="Title">Movie Title</label>
+    <input name="Title"
+           type="text"
+           class="form-control"
+           placeholder="Enter title"
+           ng-model="movie.Title"
+           ng-required="true"
+           ng-minlength="5" />
+</div>
+<div class="form-group">
+    <label for="Director">Director</label>
+    <input name="Director"
+           type="text"
+           class="form-control"
+           placeholder="Enter director"
+           ng-model="movie.Director"
+           ng-required="true" />
+</div>
+<div class="form-group">
+    <label for="TicketPrice">Ticket Price</label>
+    <input name="TicketPrice"
+           type="text"
+           class="form-control"
+           placeholder="Enter ticket price"
+           ng-model="movie.TicketPrice">
+</div>
+
