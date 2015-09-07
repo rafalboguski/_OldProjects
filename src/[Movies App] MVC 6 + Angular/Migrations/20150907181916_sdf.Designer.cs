@@ -4,12 +4,22 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Relational.Migrations.Infrastructure;
 using _Movies_App__MVC_6___Angular.Models;
 
-namespace _Movies_App__MVC_6___Angular.Migrations.Migrations
+namespace _Movies_App__MVC_6___Angular.Migrations
 {
     [ContextType(typeof(MoviesAppContext))]
-    partial class MoviesAppContextModelSnapshot : ModelSnapshot
+    partial class sdf
     {
-        public override void BuildModel(ModelBuilder builder)
+        public override string Id
+        {
+            get { return "20150907181916_sdf"; }
+        }
+        
+        public override string ProductVersion
+        {
+            get { return "7.0.0-beta5-13549"; }
+        }
+        
+        public override void BuildTargetModel(ModelBuilder builder)
         {
             builder
                 .Annotation("SqlServer:DefaultSequenceName", "DefaultSequence")
