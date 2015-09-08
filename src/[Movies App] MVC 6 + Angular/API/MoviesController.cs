@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using _Movies_App__MVC_6___Angular.Models;
+using Microsoft.Data.Entity;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,14 +23,14 @@ namespace _Movies_App__MVC_6___Angular.API
         [HttpGet]
         public IEnumerable<Movie> Get()
         {
-            return _dbContext.Movies;
+            return _dbContext.Movies.AsNoTracking();
         }
 
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            var movie = _dbContext.Movies.FirstOrDefault(m => m.Id == id);
+            var movie = _dbContext.Movies.AsNoTracking().FirstOrDefault(m => m.Id == id);
             if (movie == null)
             {
                 return new HttpNotFoundResult();
@@ -58,7 +59,7 @@ namespace _Movies_App__MVC_6___Angular.API
                     original.Title = movie.Title;
                     original.Director = movie.Director;
                     original.TicketPrice = movie.TicketPrice;
-                    
+
                     _dbContext.SaveChanges();
                     return new ObjectResult(original);
                 }
