@@ -7,11 +7,11 @@ using _Movies_App__MVC_6___Angular.Models;
 namespace _Movies_App__MVC_6___Angular.Migrations
 {
     [ContextType(typeof(MoviesAppContext))]
-    partial class _2
+    partial class _5
     {
         public override string Id
         {
-            get { return "20150909220702_2"; }
+            get { return "20150909222155_5"; }
         }
         
         public override string ProductVersion

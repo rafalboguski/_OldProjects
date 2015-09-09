@@ -78,8 +78,7 @@ namespace _Movies_App__MVC_6___Angular
         {
             using (var dbContext = applicationServices.GetService<MoviesAppContext>())
             {
-                await dbContext.Database.EnsureCreatedAsync();
-
+                
                 // proceedes only if db was not populated
                 if (!dbContext.Users.Any())
                 {   

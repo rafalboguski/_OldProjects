@@ -15,24 +15,20 @@ module.exports = function (grunt) {
         copy: {
             files: {
                 cwd: 'Scripts/'  ,
-                src: '**/*.html',
+                src: ['**/*.html','**/*.css'],
                 dest: 'wwwroot',
                 expand: true
-                
-                
-          
- 
             }
         },
 
         watch: {
             scripts: {
                 files: ['Scripts/**/*.js'],
-                tasks: ['uglify']
+                tasks: ['uglify','copy']
             }
         }
     });
 
     // define tasks
-    grunt.registerTask('default', ['uglify', 'watch']);
+    grunt.registerTask('default', ['uglify','copy', 'watch']);
 };

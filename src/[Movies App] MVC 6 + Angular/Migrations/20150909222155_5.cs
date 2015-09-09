@@ -5,26 +5,26 @@ using Microsoft.Data.Entity.Relational.Migrations.Operations;
 
 namespace _Movies_App__MVC_6___Angular.Migrations
 {
-    public partial class MovieModelValidation : Migration
+    public partial class _5 : Migration
     {
         public override void Up(MigrationBuilder migration)
         {
+            migration.DropColumn(name: "Year", table: "Movie");
             migration.AddColumn(
-                name: "ReleaseDate",
+                name: "CreateYear",
                 table: "Movie",
-                type: "datetime2",
-                nullable: false);
-            migration.AddColumn(
-                name: "TicketPrice",
-                table: "Movie",
-                type: "decimal(18, 2)",
-                nullable: false);
+                type: "int",
+                nullable: true);
         }
         
         public override void Down(MigrationBuilder migration)
         {
-            migration.DropColumn(name: "ReleaseDate", table: "Movie");
-            migration.DropColumn(name: "TicketPrice", table: "Movie");
+            migration.DropColumn(name: "CreateYear", table: "Movie");
+            migration.AddColumn(
+                name: "Year",
+                table: "Movie",
+                type: "int",
+                nullable: true);
         }
     }
 }
