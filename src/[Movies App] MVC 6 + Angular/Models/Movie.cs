@@ -20,6 +20,8 @@ namespace _Movies_App__MVC_6___Angular.Models
 
         [Range(0, 100, ErrorMessage = "Ticket price must be between 0 and 100 dollars.")]
         public decimal TicketPrice { get; set; }
+                   
+        public int? CreateYear { get; set; }
 
     }
 

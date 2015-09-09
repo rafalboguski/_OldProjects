@@ -7,9 +7,19 @@ using _Movies_App__MVC_6___Angular.Models;
 namespace _Movies_App__MVC_6___Angular.Migrations
 {
     [ContextType(typeof(MoviesAppContext))]
-    partial class MoviesAppContextModelSnapshot : ModelSnapshot
+    partial class init
     {
-        public override void BuildModel(ModelBuilder builder)
+        public override string Id
+        {
+            get { return "20150909212840_init"; }
+        }
+        
+        public override string ProductVersion
+        {
+            get { return "7.0.0-beta5-13549"; }
+        }
+        
+        public override void BuildTargetModel(ModelBuilder builder)
         {
             builder
                 .Annotation("SqlServer:ValueGeneration", "Identity");
@@ -138,13 +148,13 @@ namespace _Movies_App__MVC_6___Angular.Migrations
                         .GenerateValueOnAdd()
                         .StoreGeneratedPattern(StoreGeneratedPattern.Identity);
                     
-                    b.Property<int?>("CreateYear");
-                    
                     b.Property<string>("Director");
                     
                     b.Property<decimal>("TicketPrice");
                     
                     b.Property<string>("Title");
+                    
+                    b.Property<int?>("Year");
                     
                     b.Key("Id");
                 });

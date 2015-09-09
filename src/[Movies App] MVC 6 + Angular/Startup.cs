@@ -68,48 +68,49 @@ namespace _Movies_App__MVC_6___Angular
             PopulateDB(app.ApplicationServices).Wait();
         }
 
+        /// migrations procedure
+        /// create db simplu running program or making init migration and then applying it
+        /// remove body of init migration
+        /// make changes in model and make new migrations
+        /// apply
 
-        // populates db security
         private static async Task PopulateDB(IServiceProvider applicationServices)
         {
             using (var dbContext = applicationServices.GetService<MoviesAppContext>())
             {
-                var sqlServerDatabase = dbContext.Database;
-                if (sqlServerDatabase != null)
-                {
-                    // Create database in user root (c:\users\your name)
-                    if (await sqlServerDatabase.EnsureCreatedAsync())
+                await dbContext.Database.EnsureCreatedAsync();
+
+                // proceedes only if db was not populated
+                if (!dbContext.Users.Any())
+                {   
+                    // add some movies
+                    var movies = new List<Movie>
+                        {
+                            new Movie {Title = "Star Wars", Director = "Lucas"},
+                            new Movie {Title = "King Kong", Director = "Jackson"},
+                            new Movie {Title = "Memento", Director = "Nolan"}
+                        };
+                    movies.ForEach(m => dbContext.Add(m));
+
+                    //add some users
+                    var userManager = applicationServices.GetService<UserManager<ApplicationUser>>();
+
+                    // add editor user
+                    var stephen = new ApplicationUser
                     {
-                        // add some movies
-                        var movies = new List<Movie>
-                        {
-                            new Movie {Title="Star Wars", Director="Lucas"},
-                            new Movie {Title="King Kong", Director="Jackson"},
-                            new Movie {Title="Memento", Director="Nolan"}
-                        };
-                        movies.ForEach(m => dbContext.Add(m));
+                        UserName = "Stephen"
+                    };
+                    var result = await userManager.CreateAsync(stephen, "P@ssw0rd");
+                    await userManager.AddClaimAsync(stephen, new Claim("CanEdit", "true"));
 
-                        //add some users
-                        var userManager = applicationServices.GetService<UserManager<ApplicationUser>>();
-
-                        // add editor user
-                        var stephen = new ApplicationUser
-                        {
-                            UserName = "Stephen"
-                        };
-                        var result = await userManager.CreateAsync(stephen, "P@ssw0rd");
-                        await userManager.AddClaimAsync(stephen, new Claim("CanEdit", "true"));
-
-                        // add normal user
-                        var bob = new ApplicationUser
-                        {
-                            UserName = "Bob"
-                        };
-                        await userManager.CreateAsync(bob, "P@ssw0rd");
-                    }
-
+                    // add normal user
+                    var bob = new ApplicationUser
+                    {
+                        UserName = "Bob"
+                    };
+                    await userManager.CreateAsync(bob, "P@ssw0rd");
+                    dbContext.SaveChanges();
                 }
-                dbContext.SaveChanges();
             }
         }
     }
