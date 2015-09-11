@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using _Movies_App__MVC_6___Angular.Models;
 using Microsoft.Data.Entity;
+using _Movies_App__MVC_6___Angular.Services.Debug;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,6 +24,7 @@ namespace _Movies_App__MVC_6___Angular.API
         [HttpGet]
         public IEnumerable<Movie> Get()
         {
+            Logger.ReqRes("GET: " + Request.Path, Response.StatusCode);
             return _dbContext.Movies.AsNoTracking();
         }
 
@@ -30,13 +32,16 @@ namespace _Movies_App__MVC_6___Angular.API
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
+            
             var movie = _dbContext.Movies.AsNoTracking().FirstOrDefault(m => m.Id == id);
             if (movie == null)
             {
+                Logger.ReqRes("GET: " + Request.Path, new HttpNotFoundResult().StatusCode);
                 return new HttpNotFoundResult();
             }
             else
             {
+                Logger.ReqRes("GET: " + Request.Path, Response.StatusCode);
                 return new ObjectResult(movie);
             }
         }
