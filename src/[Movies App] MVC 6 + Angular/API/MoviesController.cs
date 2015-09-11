@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using _Movies_App__MVC_6___Angular.Models;
 using Microsoft.Data.Entity;
-using _Movies_App__MVC_6___Angular.Services.Debug;
+using _Movies_App__MVC_6___Angular.Services.Logging;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
