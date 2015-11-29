@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LinkManager
 {
-    class Context : DbContext
+    class AppContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Item> Items { get; set; }

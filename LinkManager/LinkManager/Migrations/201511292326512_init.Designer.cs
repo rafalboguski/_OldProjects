@@ -13,7 +13,7 @@ namespace LinkManager.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201511292242362_init"; }
+            get { return "201511292326512_init"; }
         }
         
         string IMigrationMetadata.Source

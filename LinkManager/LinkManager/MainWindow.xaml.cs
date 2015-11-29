@@ -20,9 +20,27 @@ namespace LinkManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AppContext _db = new AppContext();
+
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(OnLoaded);
+        }
+
+
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+
+
+            dataGrid.DataContext = _db.Products.ToList();
+
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
