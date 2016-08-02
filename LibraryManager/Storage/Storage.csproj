@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{27538707-F579-4424-A6B4-535B9A6998C9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Storage</RootNamespace>
+    <AssemblyName>Storage</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201602021929329_init.cs" />
+    <Compile Include="Migrations\201602021929329_init.Designer.cs">
+      <DependentUpon>201602021929329_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602021942075_2_m_t_m.cs" />
+    <Compile Include="Migrations\201602021942075_2_m_t_m.Designer.cs">
+      <DependentUpon>201602021942075_2_m_t_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602022002550_3.cs" />
+    <Compile Include="Migrations\201602022002550_3.Designer.cs">
+      <DependentUpon>201602022002550_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602022154196_4.cs" />
+    <Compile Include="Migrations\201602022154196_4.Designer.cs">
+      <DependentUpon>201602022154196_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602022200302_5.cs" />
+    <Compile Include="Migrations\201602022200302_5.Designer.cs">
+      <DependentUpon>201602022200302_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602022203228_6.cs" />
+    <Compile Include="Migrations\201602022203228_6.Designer.cs">
+      <DependentUpon>201602022203228_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604102234175_33.cs" />
+    <Compile Include="Migrations\201604102234175_33.Designer.cs">
+      <DependentUpon>201604102234175_33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Link.cs" />
+    <Compile Include="Models\Star.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ItemsRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602021929329_init.resx">
+      <DependentUpon>201602021929329_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602021942075_2_m_t_m.resx">
+      <DependentUpon>201602021942075_2_m_t_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602022002550_3.resx">
+      <DependentUpon>201602022002550_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602022154196_4.resx">
+      <DependentUpon>201602022154196_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602022200302_5.resx">
+      <DependentUpon>201602022200302_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602022203228_6.resx">
+      <DependentUpon>201602022203228_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604102234175_33.resx">
+      <DependentUpon>201604102234175_33.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
